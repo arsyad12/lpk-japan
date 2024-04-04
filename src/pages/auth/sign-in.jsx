@@ -79,18 +79,18 @@ export function SignIn() {
 
   return (
     <section className="p-4 flex gap-1">
-      <div className="w-full lg:w-3/5 mt-8">
-        <div className="text-center">
+      <div className="w-full lg:w-3/5">
+        <div className="text-center -mt-8">
           <img
-            src="/img/logo.png"
+            src="/img/assets/logo.png"
             alt="bruce-mars"
-            size="xl"
-            className="w-1/3 mb-4 object-center mx-auto"
+            size="sm"
+            className="w-1/3 object-center mx-auto"
           />
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Masukkan email dan password untuk melanjutkan.</Typography>
         </div>
 
-        <form onSubmit={handleLogin} className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
+        <form onSubmit={handleLogin} className="mt-4 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
               Email
@@ -139,7 +139,7 @@ export function SignIn() {
             }
             containerProps={{ className: "-ml-2.5" }}
           />
-          <Button type="submit" className="mt-6" color="teal" fullWidth>
+          <Button type="submit" className="mt-6" color="orange" fullWidth>
             Sign In
           </Button>
 
@@ -191,8 +191,8 @@ export function SignIn() {
       </div>
       <div className="w-2/6 h-full hidden lg:block">
         <img
-          src="/img/assets/Login.png"
-          className="h-full w-full object-cover rounded-3xl"
+          src="/img/assets/building.png"
+          className="mt-20 h-96 w-full object-cover rounded-3xl"
         />
       </div>
 

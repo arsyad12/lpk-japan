@@ -66,19 +66,19 @@ export function SignUp() {
   return (
     <section className="m-8 flex">
        <div className="w-2/6 h-full hidden lg:block">
-        <img
-          src="/img/assets/Register.png"
-          className="h-full w-full object-cover rounded-3xl"
+       <img
+          src="/img/assets/building2.png"
+          className="mt-20 h-96 w-full object-cover rounded-3xl"
         />
       </div>
       <div className="w-full lg:w-3/5 flex flex-col items-center justify-center">
-        <div className="text-center">
+        <div className="text-center -mt-10">
           {/* <Typography variant="h2" className="font-bold mb-4">Join Us Today</Typography> */}
           <img
-            src="/img/logo.png"
+            src="/img/assets/logo.png"
             alt="bruce-mars"
-            size="xl"
-            className="w-1/3 mb-4 object-center mx-auto"
+            size="sm"
+            className="w-40 h-36 object-center mx-auto"
           />
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to register.</Typography>
         </div>
@@ -147,7 +147,7 @@ export function SignUp() {
             }
             containerProps={{ className: "-ml-2.5" }}
           />
-          <Button type="submit" className="mt-6" fullWidth color="teal">
+          <Button type="submit" className="mt-6" fullWidth color="orange">
             Register Now
           </Button>
 
