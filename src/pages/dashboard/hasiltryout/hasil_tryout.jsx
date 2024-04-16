@@ -182,7 +182,7 @@ export function HasilTryout() {
             <CardBody className=" flex-col items-center justify-center">
 
               <div className="mb-3 flex gap-2 items-center">
-                <div className=" border-2 border-solid border-teal-500 h-10 w-0 rounded-lg" />
+                <div className=" border-2 border-solid border-orange-500 h-10 w-0 rounded-lg" />
                 <h1>Hasil Tryout</h1>
               </div>
 
@@ -222,7 +222,7 @@ export function HasilTryout() {
               </div>
 
               <div className="mt-6 mb-3 flex gap-2 items-center">
-                <div className=" border-2 border-solid border-teal-500 h-10 w-0 rounded-lg" />
+                <div className=" border-2 border-solid border-orange-500 h-10 w-0 rounded-lg" />
                 <h1>Detail Hasil Tryout</h1>
               </div>
 
@@ -262,7 +262,7 @@ export function HasilTryout() {
 
                               <DialogBody>
                                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
-                                  <div className="flex items-center border-b-2 border-solid bg-teal-400 justify-center gap-4">
+                                  <div className="flex items-center border-b-2 border-solid bg-orange-400 justify-center gap-4">
                                     <ZoomOutButton />
                                     <ZoomPopover />
                                     <ZoomInButton />
@@ -299,7 +299,7 @@ export function HasilTryout() {
                             </Card>
                           </div>
                         </div>
-                        <hr className="mt-4 border-1 border-teal-400" />
+                        <hr className="mt-4 border-1 border-orange-400" />
                       </>
                     ))}
                   </div>
@@ -355,7 +355,7 @@ export function HasilTryout() {
 
           <Card className="w-full">
             <div className="flex gap-2 items-center mx-5 mt-5">
-              <div className=" border-2 border-solid border-teal-500 h-10 w-0 rounded-lg" />
+              <div className=" border-2 border-solid border-orange-500 h-10 w-0 rounded-lg" />
               <h1>Leaderboard</h1>
             </div>
             <CardBody className="overflow-x-scroll px-0 mx-4 mr-4">
@@ -363,7 +363,7 @@ export function HasilTryout() {
                 <thead>
                   <tr>
 
-                    <th className="border-y border-teal-600 bg-teal-600 p-4 text-center">
+                    <th className="border-y border-orange-600 bg-orange-600 p-4 text-center">
                       <Typography
                         variant="small"
                         color="white"
@@ -373,7 +373,7 @@ export function HasilTryout() {
                       </Typography>
                     </th>
 
-                    <th className="border-y border-teal-600 bg-teal-600 p-2 text-center w-5">
+                    <th className="border-y border-orange-600 bg-orange-600 p-2 text-center w-5">
                       <Typography
                         variant="small"
                         color="white"
@@ -383,7 +383,7 @@ export function HasilTryout() {
                       </Typography>
                     </th>
 
-                    <th className="border-y border-teal-600 bg-teal-600 p-4">
+                    <th className="border-y border-orange-600 bg-orange-600 p-4">
                       <Typography
                         variant="small"
                         color="white"
@@ -393,7 +393,7 @@ export function HasilTryout() {
                       </Typography>
                     </th>
 
-                    <th className="border-y border-teal-600 bg-teal-600 p-2 ">
+                    <th className="border-y border-orange-600 bg-orange-600 p-2 ">
                       <Typography
                         variant="small"
                         color="white"
@@ -404,7 +404,7 @@ export function HasilTryout() {
                     </th>
 
 
-                    <th className="border-y border-teal-600 bg-teal-600 p-2 text-center">
+                    <th className="border-y border-orange-600 bg-orange-600 p-2 text-center">
                       <Typography
                         variant="small"
                         color="white"
@@ -417,7 +417,7 @@ export function HasilTryout() {
                 </thead>
                 <tbody className="mt-4">
                   {dataLeaderBoard?.leaderboard?.map((item, key) => (
-                    <tr className={item.user.name === dataLeaderBoard.user_details.user_name ? "bg-teal-300 " : null}>
+                    <tr className={item.user.name === dataLeaderBoard.user_details.user_name ? "bg-orange-300 " : null}>
 
                       <td className="w-5">
                         <Typography
@@ -482,7 +482,7 @@ export function HasilTryout() {
                     </tr>
                   ))}
                   {dataLeaderBoard?.user_details?.ranking > 10 ? (
-                    <tr className="bg-teal-400">
+                    <tr className="bg-orange-400">
 
                       <td className="w-5">
                         <Typography

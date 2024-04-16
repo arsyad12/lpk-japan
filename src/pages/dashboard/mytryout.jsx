@@ -55,7 +55,7 @@ export function Mytryout() {
       try {
         const data = await SettingUserData();
         const tryout = await Tryout();
-        console.log(tryout.tryout);
+        // console.log(tryout.tryout);
         // console.log(tryout.tryout[0].exam_groups);
         // setDetailTryoutData(tryout.tryout[0].exam_groups);
         setTryoutData(tryout.tryout);
@@ -136,7 +136,7 @@ export function Mytryout() {
         <div className="mb-12 grid gap-y-6 gap-x-6 md:grid-cols-2 xl:grid-cols-4 ">
           {statisticsCardsData.map(({ icon, title, footer, color, ...rest }) => (
             <StatisticsCard
-              color="teal"
+              color="orange"
               key={title}
               {...rest}
               title={title}
@@ -148,7 +148,7 @@ export function Mytryout() {
         </div>
       </div>
       <Card className="my-4">
-        <CardHeader variant="gradient" color="teal" className="mb-4 p-6">
+        <CardHeader variant="gradient" color="orange" className="mb-4 p-6">
           <Typography className="font-normal mb-5 text-center" color="white">
             Hallo {data.user.name}, <br></br>
             Kami siap menjadi Sahabat Prestasimu untuk mencapai impian!
@@ -179,14 +179,15 @@ export function Mytryout() {
           {tryout?.map((item, index) => (
             (!filter || item.name === filter) && (
               <div key={index} className="flex flex-col gap-4">
-                {console.log('filter:', filter)}
+                {/* {console.log('filter:', filter)} */}
                 {/* {tryout[index].exam_groups
             .filter((learn) => !filter || learn.kelas === filter)
             .map((detailTryout, learnIndex) => ( */}
-                {item?.exam_groups?.map((detailTryout, index) => (
+                {item?.exam_group?.map((detailTryout, index) => (
                     // {tryout[index].exam_groups.filter((learn) => !filter || learn.category === filter).map((detailTryout, learnIndex) => (
                     <div class="relative inline-flex" key={detailTryout.id}>
                       {/* {console.log('filter:', detailTryout.category)} */}
+                      {/* {console.log(detailTryout)} */}
 
                       <button
                         class="align-middle select-none font-sans font-bold text-left uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-4 rounded-lg border border-gray-900 text-gray-900 hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] flex items-center gap-3 shadow-md shadow-gray-900/10 active:opacity-[0.85] active:shadow-none block w-full transition duration-300 ease-in-out hover:scale-105"

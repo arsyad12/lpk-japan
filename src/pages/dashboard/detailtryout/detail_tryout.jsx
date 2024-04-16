@@ -37,7 +37,7 @@ export function DetailTryout() {
 
 
   const [dataDetailTO, setDataDetailTO] = React.useState(undefined)
-  console.log(dataDetailTO)
+  console.log("ini detail",dataDetailTO)
 
   const {
     detailTO: { resultDT },
@@ -126,7 +126,7 @@ export function DetailTryout() {
       };
 
 
-      const response = await axios.get(`https://panel.goprestasi.com/api/detail-tryout/${slug.id}`, config);
+      const response = await axios.get(`http://103.127.133.56/api/detail-tryout/${slug.id}`, config);
 
       setDataDetailTO(response.data)
       dispatch(detailToSlices.setResultDT({
@@ -136,10 +136,10 @@ export function DetailTryout() {
         data: response.data
       }))
 
-      const getUniv = await axios.get(`https://panel.goprestasi.com/api/universities`)
+      const getUniv = await axios.get(`http://103.127.133.56/api/universities`)
       setDataUniv(getUniv.data.universities)
 
-      const getDetailUser = await axios.get(`https://panel.goprestasi.com/api/setting`, config);
+      const getDetailUser = await axios.get(`http://103.127.133.56/api/setting`, config);
       setUserUniv(getDetailUser.data.user.student.university?.name)
       setUserMajor(getDetailUser.data.user.student.major?.name)
 
@@ -173,7 +173,7 @@ export function DetailTryout() {
 
 
   const getDataMajorbyId = async (selectedId) => {
-    const response = await axios.get(`https://panel.goprestasi.com/api/universities/${selectedId}`)
+    const response = await axios.get(`http://103.127.133.56/api/universities/${selectedId}`)
     setDataMajor(response.data.universities.majors)
 
   }
@@ -207,7 +207,7 @@ export function DetailTryout() {
         },
       };
 
-      const response = await axios.put(`https://panel.goprestasi.com/api/setting/university/${idUser}`, {
+      const response = await axios.put(`http://103.127.133.56/api/setting/university/${idUser}`, {
         "university_id": idUniv,
         "major_id": idMajor
       }, config)
@@ -235,7 +235,7 @@ export function DetailTryout() {
         },
       };
 
-      const response = await axios.get(`https://panel.goprestasi.com/api/exam-group-start/${slug.id}?repeat=1`, config)
+      const response = await axios.get(`http://103.127.133.56/api/exam-group-start/${slug.id}?repeat=1`, config)
       responseHandler() //ini woooyy
       // console.log(response)
     } catch (error) {
@@ -267,10 +267,10 @@ export function DetailTryout() {
     <>
 
 
-      <Card className="mt-6 bg-teal-400 w-full">
+      <Card className="mt-6 bg-orange-400 w-full">
           <Card className="mx-1 w-full">
           <CardBody>
-            <Button className="bg-teal-400 flex items-center justify-start" onClick={(() => { navigate("/") })}> <ChevronLeftIcon strokeWidth={3} className="h-5 w-5" color="white" /> Kembali</Button>
+            <Button className="bg-orange-400 flex items-center justify-start" onClick={(() => { navigate("/") })}> <ChevronLeftIcon strokeWidth={3} className="h-5 w-5" color="white" /> Kembali</Button>
 
             <Typography variant="h5" color="blue-gray" className="mb-2 mt-8 items-center justify-center text-center">
               Detail Tryout
@@ -295,7 +295,7 @@ export function DetailTryout() {
 
               <div className="flex items-center justify-between pt-2">
                 <div className="flex gap-1 items-center">
-                  <MdOutlineAccessAlarms className="h-8 w-8" color="teal" />
+                  <MdOutlineAccessAlarms className="h-8 w-8" color="orange" />
                   <p>Total Waktu</p>
                 </div>
                 <div className="flex gap-1">
@@ -305,7 +305,7 @@ export function DetailTryout() {
               </div>
 
               <div className="md:flex items-center justify-center">
-                <div color="teal" className="invisible md:visible">
+                <div color="orange" className="invisible md:visible">
                   <p className="text-xs md:text-5xl md:pt-6">|</p>
                   <hr className=" visible md:invisible h-1 bg-gray-500 border-0 rounded dark:bg-gray-700 mb-6" />
                 </div>
@@ -328,10 +328,10 @@ export function DetailTryout() {
       </Card>
 
 
-      <Card className="mt-6 bg-teal-400 w-full">
+      <Card className="mt-6 bg-orange-400 w-full">
         <Card className="mx-1 w-full">
 
-          {dataDetailTO?.detail_tryout?.lesson_category.map((category, categoryKey) => (
+          {dataDetailTO?.detail_tryout?.exam.map((category, categoryKey) => (
             <div key={categoryKey}>
               <ListItem>
                 <label
@@ -340,16 +340,16 @@ export function DetailTryout() {
                 >
              
                
-                      <div className="border-b-2 border-b-teal-500">
-                        <p className="text-grey-400 text-base pb-2 font-bold text-teal-700">
-                          {category.name.filter}
+                      <div className="border-b-2 border-b-orange-500">
+                        <p className="text-grey-400 text-base pb-2 font-bold text-orange-700">
+                          {category.lesson.name}
                         </p>
                       </div>
                
                 </label>
               </ListItem>
 
-              {category.exam.map((item, examKey) => (
+              {/* {category.exam.map((item, examKey) => (
                 <ListItem className="p-0 mb-4" key={examKey}>
                   <label
                     htmlFor={`vertical-list-react-exam-${examKey}`}
@@ -361,7 +361,7 @@ export function DetailTryout() {
 
                           {item.grade === null || item.grade[0].is_finished === 0 ? (
                             <Checkbox
-                              color="teal"
+                              color="orange"
                               disabled
                               id="vertical-list-react"
                               ripple={false}
@@ -373,7 +373,7 @@ export function DetailTryout() {
                           ) : (
                             <Checkbox
                               defaultChecked
-                              color="teal"
+                              color="orange"
                               disabled
                               id="vertical-list-react"
                               ripple={false}
@@ -395,138 +395,34 @@ export function DetailTryout() {
                         <p className="">{item.duration} Menit</p>
                       </div>
                     </div>
-                    <hr className=" bg-teal-500 mt-2 dark:bg-teal-500" />
+                    <hr className=" bg-orange-500 mt-2 dark:bg-orange-500" />
                   </label>
                 </ListItem>
-              ))}
+              ))} */}
             </div>
           ))}
 
         </Card>
       </Card>
 
-      <Card className="mt-6 bg-teal-400 w-full">
-        <Card className="mx-1 w-full">
 
-          <div className="text-center pt-6 mb-4">
-            <Typography variant="h5">
-              Target Jurusan
-            </Typography>
-          </div>
-
-          <div className="flex justify-center items-center mb-8 mt-2">
-
-            <div className="grid grid-cols-1 md:grid-cols-4">
-              <div className=" flex justify-center md:justify-end md:mr-8 col-span-2">
-                <img src="/img/hat.png" alt="" srcset="" />
-              </div>
-
-              <div className="mt-6 flex  flex-col justify-center items-center md:justify-start md:items-start col-span-2">
-                {userMajor || userUniv ? (
-                  <>
-                    <p className="text-sm mx-1">{userUniv}</p>
-                    <p className="text-sm text-center m-1 mb-4">{userMajor}</p>
-                  </>
-                ) : (
-                  <>
-                    <Typography className="mb-2">silahkan pilih jurusan terlebih dahulu</Typography>
-                  </>
-                )}
-                <Button onClick={handleOpen} color="teal" variant="gradient">
-                  {userMajor || userUniv ? ("Rubah Target Jurusan") : ("Pilih Universitas dan Jurusan")}
-                </Button>
-                <Dialog size="xs" open={open} handler={handleOpen}>
-                  <DialogBody >
-                    <Select size="md" label="Pilih Universitas" onChange={(value) => handleSelectChangeUniv(value)}>
-                      {/* value dikirim sebagai parameter funtion handle select */}
-                      {dataUniv?.map((item, key) => (
-                        //value diambil dari id univ
-
-                        <Option key={key} value={item.id}>
-                          {item.universitas}
-                        </Option>
-
-                      ))}
-                    </Select>
-                    <div className="mb-2" />
-                    <Select style={{ maxHeight: '50px' }} className="transform origin-bottom" size="md" label="Pilih Jurusan" onChange={(value) => handleSelectChangeMajor(value)}>
-                      {!dataMajor ? (
-                        <p>Select Univ First</p>
-                      ) : (
-                        dataMajor?.map((item, key) => (
-                          <Option key={key} value={item.id}>
-                            {item.major}
-                          </Option>
-                        ))
-                      )}
-                    </Select>
-                  </DialogBody>
-                  <DialogFooter>
-                    <Button
-                      variant="text"
-                      color="red"
-                      onClick={handleOpen}
-                      className="mr-1"
-                    >
-                      <span>Cancel</span>
-                    </Button>
-                    <Button variant="gradient" color="green" onClick={(() => {
-                      updateUnivMajor()
-                      resetState()
-                      handleOpen()
-                    })}>
-                      <span>Confirm</span>
-                    </Button>
-                  </DialogFooter>
-                </Dialog>
-              </div>
-
-            </div>
-
-          </div>
-
-        </Card>
-      </Card>
-
-      <Card className="mt-6 bg-teal-400 w-full">
+      <Card className="mt-6 bg-orange-400 w-full">
         <Card className="mx-1 w-full">
           <div className="flex justify-center items-center m-10 gap-8">
 
-            {dataDetailTO?.detail_tryout?.lesson_category[0]?.exam[0]?.grade === null || isFinished === 0 ? (
+            {dataDetailTO?.detail_tryout?.exam[0]?.grade === null || isFinished === 0 ? (
               <>
 
-                <Dialog open={openAlert} handler={handleOpenAlert}>
-                  <DialogBody>
-                    Sebelum Memulai Ujian, Silahkan Pilih Target Universitas Dan Jurusan Terlebih Dahulu ya...
-                  </DialogBody>
-                  <DialogFooter>
-                    <Button
-                      variant="text"
-                      color="red"
-                      onClick={handleOpenAlert}
-                      className="mr-1"
-                    >
-                      <span>Cancel</span>
-                    </Button>
-                    <Button variant="gradient" color="green" onClick={handleOpenAlert}>
-                      <span>Confirm</span>
-                    </Button>
-                  </DialogFooter>
-                </Dialog>
+               
 
-                <Button className="bg-teal-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
-                  if (dataUser.user.student.major === null) {
-                    handleOpenAlert()
-                  } else {
-                    setLoadingButton(true)
-                    setTimeout(() => {
+                <Button className="bg-orange-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
+                  
                       navigate(`/dashboard/exam/${slug.id}`)
-                    }, 1000);
-                  }
+                
                 })}>{
-                      dataDetailTO?.detail_tryout?.lesson_category[0]?.exam[0]?.grade === null ||
+                      dataDetailTO?.detail_tryout?.exam[0]?.grade === null ||
                       dataDetailTO?.detail_tryout?.lesson_category?.length === 0 ||
-                      dataDetailTO?.detail_tryout?.lesson_category[0]?.exam[0]?.grade[0]?.is_finished === 0 ?
+                      dataDetailTO?.detail_tryout?.exam[0]?.grade[0]?.is_finished === 0 ?
                       <>
                         <span>Mulai Ujian </span> {loadingButton ? (<Spinner className="mx-3 h-6 w-6" color="amber" />) : null}
                       </>
@@ -539,11 +435,11 @@ export function DetailTryout() {
               </>
             ) :
               <>
-                <Button className="bg-teal-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
+                <Button className="bg-orange-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
                   navigate(`/dashboard/hasilTryout/${slug.id}`)
                 })}>Lihat Hasil TO</Button>
 
-                <Button className="bg-teal-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
+                <Button className="bg-orange-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
                   responseHandler()
                   resetHandler()
                   setLoadingButton(true)

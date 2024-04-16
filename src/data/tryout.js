@@ -14,7 +14,7 @@ export const Tryout = async () => {
           },
         };
 
-        const response = await axios.get('https://panel.goprestasi.com/api/tryout', config);
+        const response = await axios.get('http://103.127.133.56/api/tryout', config);
         // console.log(response);
         // setProfileData(response.data);
         return response.data; 

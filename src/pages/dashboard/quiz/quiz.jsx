@@ -165,7 +165,7 @@ export function Quiz() {
       <div className="grid grid-cols-1 md:grid-cols-12">
 
         <div className="col-span-8 m-4">
-          <Card className=" bg-teal-400 w-full">
+          <Card className=" bg-orange-400 w-full">
             <Card className="mx-1 w-full">
               <CardBody>
 
@@ -193,7 +193,7 @@ export function Quiz() {
                         fullWidth
                         variant={selectedOptions[counter] !== 1 ? "outlined" : "gradient"}
                         className="text-left mt-2"
-                        color="teal"
+                        color="orange"
                         style={{textTransform:'unset'}}
                         onClick={() => addAnswerAndSetActive(1)}
                       >
@@ -203,7 +203,7 @@ export function Quiz() {
                         fullWidth
                         variant={selectedOptions[counter] !== 2 ? "outlined" : "gradient"}
                         className="text-left mt-2"
-                        color="teal"
+                        color="orange"
                         style={{textTransform:'unset'}}
                         onClick={() => addAnswerAndSetActive(2)}
                       >B. {parse(striptags(data?.questionLists[counter]?.option_2, '<img>'), '<img>')}
@@ -213,7 +213,7 @@ export function Quiz() {
                         fullWidth
                         variant={selectedOptions[counter] !== 3 ? "outlined" : "gradient"}
                         className="text-left mt-2 "
-                        color="teal"
+                        color="orange"
                         style={{textTransform:'unset'}}
                         onClick={() => addAnswerAndSetActive(3)}
                       >
@@ -225,7 +225,7 @@ export function Quiz() {
                         fullWidth
                         variant={selectedOptions[counter] !== 4 ? "outlined" : "gradient"}
                         className="text-left mt-2"
-                        color="teal"
+                        color="orange"
                         style={{textTransform:'unset'}}
                         onClick={() => addAnswerAndSetActive(4)}
                       >D. {parse(striptags(data?.questionLists[counter]?.option_4, '<img>'), '<img>')}
@@ -235,7 +235,7 @@ export function Quiz() {
                         fullWidth
                         variant={selectedOptions[counter] !== 5 ? "outlined" : "gradient"}
                         className="text-left mt-2"
-                        color="teal"
+                        color="orange"
                         style={{textTransform:'unset'}}
                         onClick={() => addAnswerAndSetActive(5)}
                       >E. {parse(striptags(data?.questionLists[counter]?.option_5, '<img>'), '<img>')}
@@ -245,7 +245,7 @@ export function Quiz() {
                 )}
 
                 <div className="flex justify-between mt-4">
-                  <Button color="teal" variant="gradient" onClick={(() => {
+                  <Button color="orange" variant="gradient" onClick={(() => {
                     if (counter > 0) {
                       setCounter(counter - 1)
                       setCurrentPage(currentPage - 1)
@@ -256,7 +256,7 @@ export function Quiz() {
                   })} >Prev</Button>
 
                   {counter !== data?.questionLists?.length ? (
-                    <Button color="teal" variant="gradient" onClick={(() => {
+                    <Button color="orange" variant="gradient" onClick={(() => {
                       setCounter(counter + 1)
                       setCurrentPage(currentPage + 1)
                       if (counter === data?.questionLists?.length) {
@@ -313,7 +313,7 @@ export function Quiz() {
                         className="w-11 h-11 items-center justify-center"
                         key={incrementValueButton}
                         color={`${key === currentPage
-                          ? "teal"
+                          ? "orange"
                           : (answeredQuestions[-1 + key] ? "yellow" : "blue-gray")}`}
                         onClick={(() => { setCurrentPage(incrementValueButton); setCounter(-1 + incrementValueButton) })}
                       >

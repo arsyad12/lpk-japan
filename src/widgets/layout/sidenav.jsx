@@ -57,13 +57,14 @@ export function Sidenav({ brandImg, brandName, routes }) {
             variant="h6"
             color={sidenavType === "dark" ? "white" : "blue-gray"}
           > <img
-              src="/img/logo.png"
+              src="/img/assets/rsp2.png"
               alt="bruce-mars"
               size="xl"
-              className="w-1/2 object-center mx-auto"
+              className="w-60 object-center mx-auto"
             />
           </Typography>
         </Link>
+        
         <IconButton
           variant="text"
           color="white"
@@ -72,21 +73,21 @@ export function Sidenav({ brandImg, brandName, routes }) {
           className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
           onClick={() => setOpenSidenav(dispatch, false)}
         >
-          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-teal-500" />
+          <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-orange-500" />
         </IconButton>
       </div>
-      <div className="m-4">
+      <div className="mx-4 -mt-4">
         <div className="flex flex-col gap-x-4 items-center justify-center mb-5">
           <img
             src={profileData ? (profileData.user.image
             ) : (
-              "/img/icon-go.png"
+              "/img/assets/logoside.png"
             )}
             className="w-20 h-20 mb-1 rounded-full cursor-pointer"
             alt="user"
           />
           <div>
-            <h1 className="text-teal-500 items-center origin-left font-medium text-md">
+            <h1 className="text-orange-500 items-center origin-left font-medium text-md">
               {profileData ? (profileData.user.name
               ) : (
                 <p>Loading profile...</p>

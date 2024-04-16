@@ -158,10 +158,10 @@ export function SlideShow () {
       {windowWidth >= 640 && (
         <>
           <div style={{ ...controlStyle, left: "10%" }} onClick={handlePrevSlide}>
-            <ChevronLeftIcon  className="items-center text-teal-500" />
+            <ChevronLeftIcon  className="items-center text-orange-500" />
           </div>
           <div style={{ ...controlStyle, right: "10%" }} onClick={handleNextSlide}>
-            <ChevronRightIcon className="items-center text-teal-500" style={{ fontSize: "30px" }} />
+            <ChevronRightIcon className="items-center text-orange-500" style={{ fontSize: "30px" }} />
           </div>
         </>
        )}

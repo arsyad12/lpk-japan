@@ -99,7 +99,7 @@ export function Review() {
       <div className="grid grid-cols-1 md:grid-cols-12">
 
         <div className="col-span-8 m-4">
-          <Card className=" bg-teal-400 w-full">
+          <Card className=" bg-orange-400 w-full">
             <Card className="mx-1 w-full">
               <CardBody>
 
@@ -127,7 +127,7 @@ export function Review() {
                         fullWidth
                         variant={data[counter]?.answer !== 1 ? "outlined" : "gradient"}
                         className="text-left mt-2"
-                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "teal"}
+                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "orange"}
 
                       >
                         A. {parse(striptags(data[counter]?.option_1,'<img>'),'<img>')} 
@@ -136,7 +136,7 @@ export function Review() {
                         fullWidth
                         variant={data[counter]?.answer !== 2 ? "outlined" : "gradient"}
                         className="text-left mt-2"
-                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "teal"}
+                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "orange"}
                       >B.  {parse(striptags(data[counter]?.option_2,'<img>'),'<img>')} 
                       </Button>
 
@@ -144,7 +144,7 @@ export function Review() {
                         fullWidth
                         variant={data[counter]?.answer !== 3 ? "outlined" : "gradient"}
                         className="text-left mt-2 "
-                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "teal"}
+                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "orange"}
                       >
                         C. {parse(striptags(data[counter]?.option_3,'<img>'),'<img>')} 
 
@@ -154,7 +154,7 @@ export function Review() {
                         fullWidth
                         variant={data[counter]?.answer !== 4 ? "outlined" : "gradient"}
                         className="text-left mt-2"
-                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "teal"}
+                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "orange"}
                       >D.  {parse(striptags(data[counter]?.option_4,'<img>'),'<img>')} 
                       </Button>
 
@@ -162,7 +162,7 @@ export function Review() {
                         fullWidth
                         variant={data[counter]?.answer !== 5 ? "outlined" : "gradient"}
                         className="text-left mt-2"
-                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "teal"}
+                        color={data[counter]?.answer !== data[counter]?.question_answer ? "red" : "orange"}
                       >E.  {parse(striptags(data[counter]?.option_5,'<img>'),'<img>')} 
                       </Button>
                     </div>
@@ -170,7 +170,7 @@ export function Review() {
                 )}
 
                 <div className="flex justify-between mt-4">
-                  <Button color="teal" variant="gradient" onClick={(() => {
+                  <Button color="orange" variant="gradient" onClick={(() => {
                     if (counter > 0) {
                       setCounter(counter - 1)
                       setCurrentPage(currentPage - 1)
@@ -181,7 +181,7 @@ export function Review() {
                   })} >Prev</Button>
 
                   {counter !== data.length ? (
-                    <Button color="teal" variant="gradient" className="text-xs" onClick={(() => {
+                    <Button color="orange" variant="gradient" className="text-xs" onClick={(() => {
                       setCounter(counter + 1)
                       setCurrentPage(currentPage + 1)
                       if (counter === data.length) {
@@ -221,7 +221,7 @@ export function Review() {
                         key={incrementValueButton}
                         color={`${key === currentPage
                           ? "yellow"
-                          : (item.is_correct === 'N' ? "red" : "teal")}`}
+                          : (item.is_correct === 'N' ? "red" : "orange")}`}
                         onClick={(() => { setCurrentPage(incrementValueButton); setCounter(-1 + incrementValueButton) })}
                       >
                         {incrementValueButton}
@@ -254,7 +254,7 @@ export function Review() {
 
                   <div className="flex gap-3">
                     <Typography>Jawaban Benar</Typography>
-                    <Typography className="font-bold text-teal-500">
+                    <Typography className="font-bold text-orange-500">
                       {data[counter]?.question_answer === 1 ? ": A"
                         : data[counter]?.question_answer === 2 ? ": B"
                           : data[counter]?.question_answer === 3 ? ": C"
@@ -307,7 +307,7 @@ export function Review() {
 
                       <div className="flex gap-3">
                         <Typography>Jawaban Benar</Typography>
-                        <Typography className="font-bold text-teal-500">
+                        <Typography className="font-bold text-orange-500">
                           {data[counter]?.question_answer === 1 ? ": A"
                             : data[counter]?.question_answer === 2 ? ": B"
                               : data[counter]?.question_answer === 3 ? ": C"

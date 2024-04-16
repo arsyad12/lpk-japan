@@ -46,13 +46,17 @@ export function ShowLearning() {
 
     const [detailLearning, setDetailLearning] = useState(undefined);
 
+    console.log(detailLearning)
+
 
     const [openId, setOpenId] = useState(null);
 
     const toggleOpen = (id) => {
         setOpenId((prevId) => (prevId === id ? null : id));
     };
-
+ 
+ 	
+    
 
     const [pdf, setPdf] = useState(undefined)
     // console.log(pdf)
@@ -82,7 +86,7 @@ export function ShowLearning() {
                 },
             };
 
-            const response = await axios.get(`https://panel.goprestasi.com/api/detail-learning/${learningId}`, config);
+            const response = await axios.get(`http://103.127.133.56/api/detail-learning/${learningId}`, config);
             setDetailLearning(response?.data?.detail_learning)
             setProgress(response?.data)
 
@@ -113,7 +117,7 @@ export function ShowLearning() {
                 },
             };
 
-            const response = await axios.get(`https://panel.goprestasi.com/api/quiz-grade/${gradeQuizId}`, config);
+            const response = await axios.get(`http://103.127.133.56/api/quiz-grade/${gradeQuizId}`, config);
             console.log(response)
             setResultQuiz(response)
 
@@ -143,7 +147,7 @@ export function ShowLearning() {
                 },
             };
 
-            const response = await axios.get(`https://panel.goprestasi.com/api/learning-material/${idMaterial}`, config);
+            const response = await axios.get(`http://103.127.133.56/api/learning-material/${idMaterial}`, config);
             setPdf(response.request.responseURL)
 
         } catch (error) {
@@ -171,9 +175,9 @@ export function ShowLearning() {
     return (
         <div>
             <div className='sm:mx-5 mx-3 sm:pt-3 pt-1'>
-                <button className='bg-teal-500 text-white cursor-pointer text-sm sm:text-base flex justify-center items-center py-1 px-3 rounded-md gap-2' > <FaChevronLeft /> <Link to="/dashboard/learning">Kembali</Link></button>
+                <button className='bg-orange-500 text-white cursor-pointer text-sm sm:text-base flex justify-center items-center py-1 px-3 rounded-md gap-2' > <FaChevronLeft /> <Link to="/dashboard/learning">Kembali</Link></button>
             </div>
-            <div className='sm:mx-5 mx-3 bg-white shadow-md flex-col sm:flex-row justify-between items-center rounded-2xl mt-3 border-l-8 border-teal-500 sm:p-3 p-2  relative'>
+            <div className='sm:mx-5 mx-3 bg-white shadow-md flex-col sm:flex-row justify-between items-center rounded-2xl mt-3 border-l-8 border-orange-500 sm:p-3 p-2  relative'>
                 <div className='flex justify-center items-center sm:py-5 py-2'>
                     <img src="/img/assets/bg.png" alt='bg' className='rounded-2xl w-full sm:w-auto' />
                 </div>
@@ -184,7 +188,7 @@ export function ShowLearning() {
             </div>
 
             <div className='flex sm:flex-row flex-col sm:mx-5 mx-3 '>
-                {/* <div className='flex-2 w-auto h-full sm:w-[500px]  bg-white shadow-md flex-col sm:flex-row justify-between items-center rounded-2xl mt-3 border-l-8 border-teal-500 p-3 relative'>
+                {/* <div className='flex-2 w-auto h-full sm:w-[500px]  bg-white shadow-md flex-col sm:flex-row justify-between items-center rounded-2xl mt-3 border-l-8 border-orange-500 p-3 relative'>
                     {detailLearning?.learning_chapter.map((learningChapter, key) => (
                         <>
 
@@ -196,7 +200,7 @@ export function ShowLearning() {
                                     toggleOpen(learningChapter.id);
                                 }
 
-                            })} color='teal'>Progres Rangkuman & Pembahasan {learningChapter?.quiz?.title}</Button>
+                            })} color='orange'>Progres Rangkuman & Pembahasan {learningChapter?.quiz?.title}</Button>
 
                             <Collapse open={openId === learningChapter.id}>
                                 <Card className="my-4 mx-auto w-full">
@@ -252,16 +256,16 @@ export function ShowLearning() {
 
                 <div className='flex-1'>
                     <div className=''>
-                        {detailLearning?.learning_chapter.map((learningChapter, key) => (
+                        {detailLearning?.chapterQuiz.map((learningChapter, key) => (
                             <div key={key} className='border shadow-lg cursor-pointer pb-3 border-gray-300 bg-gray-100 tracking-wider rounded-t-lg sm:m-3 mt-3 sm:mt-3 mx-1 sm:mx-3  '>
                                 <div className='flex shadow-lg justify-between h-[60px] bg-white tracking-wider rounded-t-lg' onClick={() => setShowContent((prev) => (prev === key ? null : key))}>
                                     <p className='flex items-center ml-6'>{learningChapter?.name_chapter} </p>
-                                    <span className='flex items-center mr-6'><FaChevronRight color='teal' /></span>
+                                    <span className='flex items-center mr-6'><FaChevronRight color='orange' /></span>
                                 </div>
                                 {showContent === key && (
                                     <>
                                         {learningChapter?.material.map((materials, keyMaterials) => (
-                                            <div key={keyMaterials} className='mx-7 bg-white shadow-lg flex-col sm:flex-row text-left p-2 rounded-2xl mt-3 border-l-8 border-teal-500 '
+                                            <div key={keyMaterials} className='mx-7 bg-white shadow-lg flex-col sm:flex-row text-left p-2 rounded-2xl mt-3 border-l-8 border-orange-500 '
 
                                                 onClick={(() => {
                                                     // Mendapatkan data PDF dan membuka dialog
@@ -280,7 +284,7 @@ export function ShowLearning() {
                                                         {pdf && (
 
                                                             <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`}>
-                                                                <div className="flex items-center border-b-2 border-solid bg-teal-400 justify-center gap-4">
+                                                                <div className="flex items-center border-b-2 border-solid bg-orange-400 justify-center gap-4">
                                                                     <ZoomOutButton />
                                                                     <ZoomPopover />
                                                                     <ZoomInButton />
@@ -309,7 +313,7 @@ export function ShowLearning() {
 
                                         ))}
 
-                                        <div className='mx-7 bg-white shadow-lg flex-col sm:flex-row text-left p-2 rounded-2xl mt-3 border-l-8 border-teal-500 '>
+                                        <div className='mx-7 bg-white shadow-lg flex-col sm:flex-row text-left p-2 rounded-2xl mt-3 border-l-8 border-orange-500 '>
                                             <div className='flex justify-between items-center' onClick={(() => { navigateHandle(learningChapter?.quiz?.id, detailLearning.id) })}>
                                                 <div>
                                                     <p className='text-gray-400'>Materi Rangkuman</p>

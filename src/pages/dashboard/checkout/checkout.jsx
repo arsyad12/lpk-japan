@@ -100,11 +100,11 @@ export function Checkout() {
 
         <div className="mb-3"><p>Apakah pembelian kamu sudah benar? Paket tidak dapat diubah setelah ini</p></div>
 
-        <div className="mb-3 border-teal-500 border-2">
+        <div className="mb-3 border-orange-500 border-2">
           <p className="pt-2">Ringkasan Pembelian</p>
           <div className="m-4 flex justify-between">
             <Typography className="font-normal">Harga Paket</Typography>
-            <Typography color="gray-300" className="text-start text-teal-700 font-bold ">
+            <Typography color="gray-300" className="text-start text-orange-700 font-bold ">
               {item.price_before_discount.toLocaleString('id-ID', {
                 style: 'currency',
                 currency: 'IDR',
@@ -128,7 +128,7 @@ export function Checkout() {
 
           <div className="m-4  flex justify-between">
             <Typography className="font-normal">Total Order</Typography>
-            <Typography color="gray-300" className="text-start  text-teal-700 font-bold ">
+            <Typography color="gray-300" className="text-start  text-orange-700 font-bold ">
               {item.price_after_discount.toLocaleString('id-ID', {
                 style: 'currency',
                 currency: 'IDR',
@@ -188,7 +188,7 @@ export function Checkout() {
     <>
       <div className="grid grid-cols-1 md:grid-cols-12">
         <div className="col-span-8 mt-2">
-          <Card className="mt-6 bg-teal-400 w-full">
+          <Card className="mt-6 bg-orange-400 w-full">
             <Card className="mx-1 w-full overflow-hidden">
 
               <div class="absolute right-0 top-0 h-12 w-16">
@@ -198,7 +198,7 @@ export function Checkout() {
               </div>
 
 
-              <div className="p-4 border border-teal-800 overflow-hidden rounded-xl">
+              <div className="p-4 border border-orange-800 overflow-hidden rounded-xl">
 
                 <Typography className="font-normal mb-2">{item.name}</Typography>
 
@@ -222,7 +222,7 @@ export function Checkout() {
                 <ul className="flex flex-col gap-4">
                   {item.packet_detail?.split('<br>').map((desc, indexTrim) => (
                     <li key={indexTrim} className="flex items-center gap-4">
-                      <span className="rounded-full border border-teal-800 bg-teal-50 p-1">
+                      <span className="rounded-full border border-orange-800 bg-orange-50 p-1">
                         <CheckIcon />
                       </span>
                       <Typography className="font-normal">{desc.trim()}</Typography>
@@ -235,11 +235,11 @@ export function Checkout() {
           </Card>
         </div>
         <div className="col-span-4 mt-2 mx-6">
-          <Card className="mt-6 bg-teal-400 w-full">
+          <Card className="mt-6 bg-orange-400 w-full">
             <Card className="mx-1 w-full">
               <div className="m-4 flex justify-between">
                 <Typography className="font-normal">Harga Paket</Typography>
-                <Typography color="gray-300" className="text-start text-teal-700 font-bold ">
+                <Typography color="gray-300" className="text-start text-orange-700 font-bold ">
                   {item.price_before_discount.toLocaleString('id-ID', {
                     style: 'currency',
                     currency: 'IDR',
@@ -263,7 +263,7 @@ export function Checkout() {
 
               <div className="m-4  flex justify-between">
                 <Typography className="font-normal">Total Order</Typography>
-                <Typography color="gray-300" className="text-start  text-teal-700 font-bold ">
+                <Typography color="gray-300" className="text-start  text-orange-700 font-bold ">
                   {item.price_after_discount.toLocaleString('id-ID', {
                     style: 'currency',
                     currency: 'IDR',
@@ -279,7 +279,7 @@ export function Checkout() {
             </Card>
           </Card>
 
-          <Button variant="gradient" color="teal" size="lg" className="w-full mt-4"
+          <Button variant="gradient" color="orange" size="lg" className="w-full mt-4"
             onClick={(() => { swalConfirm() })}>
             Beli Paket
           </Button>

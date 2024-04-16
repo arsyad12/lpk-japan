@@ -68,7 +68,7 @@ export function ChangePass() {
                         />
                     </div>
 
-                    <Button type="submit" className="mt-6" color="teal" fullWidth >
+                    <Button type="submit" className="mt-6" color="orange" fullWidth >
                         Update Password
                     </Button>
                 </form>

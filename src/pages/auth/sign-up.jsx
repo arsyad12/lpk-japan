@@ -77,12 +77,11 @@ export function SignUp() {
           <img
             src="/img/assets/logo.png"
             alt="bruce-mars"
-            size="sm"
-            className="w-40 h-36 object-center mx-auto"
+            className="w-1/6 object-center mx-auto"
           />
-          <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to register.</Typography>
+          <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal -mt-6">Enter your email and password to register.</Typography>
         </div>
-        <form onSubmit={handleSignUp} className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
+        <form onSubmit={handleSignUp} className="mt-3 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
               Your Name

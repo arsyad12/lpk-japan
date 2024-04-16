@@ -98,7 +98,7 @@ export function ForgotPass() {
                             />
                         </div>
 
-                        <Button type="submit" className="mt-6  flex gap-2 items-center justify-center" color="teal" fullWidth >
+                        <Button type="submit" className="mt-6  flex gap-2 items-center justify-center" color="orange" fullWidth >
                             <span>Request OTP</span> {loadingButton ? (<Spinner className="mx-3 h-4 w-4" color="amber" />) : null}
                         </Button>
                     </form>
@@ -115,7 +115,7 @@ export function ForgotPass() {
         ) :
 
 
-            <div className="bg-teal-500">
+            <div className="bg-orange-500">
                 <div className="flex h-screen w-screen justify-center items-center overflow-hidden">
 
                     <Card className="m-56 flex items-center justify-center">
@@ -130,7 +130,7 @@ export function ForgotPass() {
                             size="xl"
                             className="w-1/3 mb-8 mt-4 object-center mx-auto"
                         />
-                        <Typography color="white" className="-mt-4 font-bold mb-5 text-teal-500">Masukan Kode OTP yang sudah dikirm ke email anda</Typography>
+                        <Typography color="white" className="-mt-4 font-bold mb-5 text-orange-500">Masukan Kode OTP yang sudah dikirm ke email anda</Typography>
 
                             <OtpInput
                                 value={otp}
@@ -138,7 +138,7 @@ export function ForgotPass() {
                                 numInputs={6}
                                 renderSeparator={<span className="mx-3"> - </span>}
                                 inputStyle={{
-                                    borderColor: 'teal',
+                                    borderColor: 'orange',
                                     borderWidth: 3,
                                     borderRadius: 10,
                                     width: '10vw',
@@ -151,7 +151,7 @@ export function ForgotPass() {
                         </div>
 
                         <div className="mb-10">
-                            <Button variant="gradient" color="teal" className="w-full mt-4 flex gap-2 items-center justify-center" loading={true} onClick={validateOTP}>
+                            <Button variant="gradient" color="orange" className="w-full mt-4 flex gap-2 items-center justify-center" loading={true} onClick={validateOTP}>
                                 <span>Verifikasi</span> {loadingButton ? (<Spinner className="mx-3 h-4 w-4" color="amber" />) : null}
                             </Button>
                         </div>

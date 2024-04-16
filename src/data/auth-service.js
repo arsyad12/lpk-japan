@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_URL = "https://panel.goprestasi.com/api";
+const API_URL = "http://103.127.133.56/api";
 
 export const authService = {
   login: async (email, password) => {
@@ -43,7 +43,7 @@ export const authService = {
           'Accept': 'application/json',
         },
       });
-      // console.log(response);
+      console.log(response);
       if (response.status === 200) {
         // localStorage.setItem('accessToken', response.data.authorization.token);
         return true;
@@ -82,7 +82,7 @@ export const authService = {
 
   loginGoogle: async () => {
     try {
-      const response = await axios.get(`${API_URL}/login/google`, {
+      const response = await axios.get(`https://rsp-onlineclass.com/api/auth/google/callback`, {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',

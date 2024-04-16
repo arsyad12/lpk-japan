@@ -136,10 +136,10 @@ export function DetailQuiz() {
   return (
     <>
 
-      <Card className="mt-6 bg-teal-400 w-full">
+      <Card className="mt-6 bg-orange-400 w-full">
         <Card className="mx-1 w-full">
           <CardBody>
-            <Button className="bg-teal-400 flex items-center justify-start" onClick={(() => { navigateBackLearning(learningId) })}> <ChevronLeftIcon strokeWidth={3} className="h-5 w-5" color="white" /> Kembali</Button>
+            <Button className="bg-orange-400 flex items-center justify-start" onClick={(() => { navigateBackLearning(learningId) })}> <ChevronLeftIcon strokeWidth={3} className="h-5 w-5" color="white" /> Kembali</Button>
 
             <Typography variant="h5" color="blue-gray" className="mb-2 mt-8 items-center justify-center text-center">
               Detail Tryout
@@ -164,7 +164,7 @@ export function DetailQuiz() {
 
               <div className="flex items-center justify-between pt-2">
                 <div className="flex gap-1 items-center">
-                  <MdOutlineAccessAlarms className="h-8 w-8" color="teal" />
+                  <MdOutlineAccessAlarms className="h-8 w-8" color="orange" />
                   <p>Total Waktu</p>
                 </div>
                 <div className="flex gap-1">
@@ -174,7 +174,7 @@ export function DetailQuiz() {
               </div>
 
               <div className="md:flex items-center justify-center">
-                <div color="teal" className="invisible md:visible">
+                <div color="orange" className="invisible md:visible">
                   <p className="text-xs md:text-5xl md:pt-6">|</p>
                   <hr className=" visible md:invisible h-1 bg-gray-500 border-0 rounded dark:bg-gray-700 mb-6" />
                 </div>
@@ -197,7 +197,7 @@ export function DetailQuiz() {
       </Card>
 
 
-      <Card className="mt-6 bg-teal-400 w-full">
+      <Card className="mt-6 bg-orange-400 w-full">
         <Card className="mx-1 w-full">
 
           <div>
@@ -211,7 +211,7 @@ export function DetailQuiz() {
 
                       {detailQuiz?.detail_quiz?.grade_quiz === null || detailQuiz?.detail_quiz?.grade_quiz?.is_finished === 0 ? (
                         <Checkbox
-                          color="teal"
+                          color="orange"
                           disabled
                           ripple={false}
                           className="hover:before:opacity-0"
@@ -222,7 +222,7 @@ export function DetailQuiz() {
                       ) : (
                         <Checkbox
                           defaultChecked
-                          color="teal"
+                          color="orange"
                           disabled
                           ripple={false}
                           className="hover:before:opacity-0"
@@ -243,7 +243,7 @@ export function DetailQuiz() {
                     <p className="">- Menit</p>
                   </div>
                 </div>
-                <hr className=" bg-teal-500 mt-2 dark:bg-teal-500" />
+                <hr className=" bg-orange-500 mt-2 dark:bg-orange-500" />
               </label>
             </ListItem>
           </div>
@@ -252,13 +252,13 @@ export function DetailQuiz() {
         </Card>
       </Card>
 
-      <Card className="mt-6 bg-teal-400 w-full">
+      <Card className="mt-6 bg-orange-400 w-full">
         <Card className="mx-1 w-full">
           <div className="flex justify-center items-center m-10 gap-8">
 
             {detailQuiz?.detail_quiz?.grade_quiz === null || detailQuiz?.detail_quiz?.grade_quiz?.is_finished === 0 ? (
               <>
-                <Button className="bg-teal-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
+                <Button className="bg-orange-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
                   setLoadingButton(true)
                   setTimeout(() => {
                     navigateHandle(quizId, learningId)
@@ -275,11 +275,11 @@ export function DetailQuiz() {
               </>
             ) :
               <>
-                <Button className="bg-teal-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
+                <Button className="bg-orange-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
                   navigateReview(quizGradeId, learningId)
                 })}>Pembahasan Quiz</Button>
 
-                <Button className="bg-teal-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
+                <Button className="bg-orange-400 flex items-center justify-center w-80 md:w-64 h-10 text-xs" onClick={(() => {
                   responseHandler()
                   resetHandler()
                   setTimeout(() => {

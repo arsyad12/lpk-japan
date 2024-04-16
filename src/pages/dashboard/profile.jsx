@@ -83,10 +83,10 @@ export function Profile() {
       setDataUser(data)
       setMoreInfo(dataMoreInfo)
 
-      const response = await axios.get(`https://panel.goprestasi.com/api/province`)
+      const response = await axios.get(`http://103.127.133.56/api/province`)
       setProvince(response?.data)
 
-      const getUniv = await axios.get(`https://panel.goprestasi.com/api/universities`)
+      const getUniv = await axios.get(`http://103.127.133.56/api/universities`)
       setDataUniv(getUniv.data.universities)
 
 
@@ -122,8 +122,7 @@ export function Profile() {
         { variable: Idcity, message: 'Lengkapi data Kabupaten / Kota' },
         { variable: Iddistrict, message: 'Lengkapi data Kecamatan.' },
         { variable: Idvillage, message: 'Lengkapi Data Kelurahan' },
-        { variable: IdUniv, message: 'Pilih Universitas Tujuan Kamu' },
-        { variable: IdMajor, message: 'Pilih Jurusan Tujuan Kamu' }
+
       ];
 
       const missingField = requiredFields.find(field => !field.variable);
@@ -149,7 +148,7 @@ export function Profile() {
         },
       };
 
-      const response = await axios.put(`https://panel.goprestasi.com/api/setting/${dataUser?.user.id}`, {
+      const response = await axios.put(`http://103.127.133.56/api/setting/${dataUser?.user.id}`, {
         "name": name,
         "password": dataUser?.user?.password,
         "province_id": Idprovince,
@@ -161,8 +160,6 @@ export function Profile() {
         "gender": gender,
         "is_member": dataUser?.user?.student?.is_member,
         "origin_of_school": asalSekolah,
-        "university_id": IdUniv,
-        "major_id": IdMajor
       }, config);
 
       resetState()
@@ -204,22 +201,22 @@ export function Profile() {
 
 
   const getCity = async (provinceId) => {
-    const response = await axios.get(`https://panel.goprestasi.com/api/city/${provinceId}`)
+    const response = await axios.get(`http://103.127.133.56/api/city/${provinceId}`)
     setCity(response.data)
   }
 
   const getDistrict = async (cityId) => {
-    const response = await axios.get(`https://panel.goprestasi.com/api/district/${cityId}`)
+    const response = await axios.get(`http://103.127.133.56/api/district/${cityId}`)
     setDistrict(response.data)
   }
 
   const getVillage = async (districtId) => {
-    const response = await axios.get(`https://panel.goprestasi.com/api/village/${districtId}`)
+    const response = await axios.get(`http://103.127.133.56/api/village/${districtId}`)
     setVillage(response.data)
   }
 
   const getDataMajorbyId = async (selectedId) => {
-    const response = await axios.get(`https://panel.goprestasi.com/api/universities/${selectedId}`)
+    const response = await axios.get(`http://103.127.133.56/api/universities/${selectedId}`)
     setDataMajor(response.data.universities.majors)
 
   }
@@ -248,16 +245,7 @@ export function Profile() {
     setIdVillage(villageId)
   };
 
-  const handleSelectChangeUniv = (selectedOption) => {
-    const selectedId = selectedOption;
-    setIdUniv(selectedId)
-    getDataMajorbyId(selectedId);
-  };
-
-  const handleSelectChangeMajor = (selectedOption) => {
-    const selectedId = selectedOption;
-    setIdMajor(selectedId)
-  };
+ 
 
 
   useEffect(() => {
@@ -304,7 +292,7 @@ export function Profile() {
       const form = new FormData()
       form.append('image', selectedFile)
       // console.log(file)
-      const response = await axios.post(`https://panel.goprestasi.com/api/setting/image/${dataUser?.user.id}`, form, config);
+      const response = await axios.post(`http://103.127.133.56/api/setting/image/${dataUser?.user.id}`, form, config);
       // console.log(response)
 
       resetState()
@@ -336,7 +324,7 @@ export function Profile() {
         },
       };
 
-      const response = await axios.put(`https://panel.goprestasi.com/api/setting/suggestion/${dataUser.user.id}`, {
+      const response = await axios.put(`http://103.127.133.56/api/setting/suggestion/${dataUser.user.id}`, {
         "suggestion": saran
       }, config);
       if (response.status === 200) {
@@ -377,7 +365,7 @@ export function Profile() {
 
       <div>
 
-        <Card className=" mt-3  mb-4  border border-blue-gray-100 bg-teal-500 flex">
+        <Card className=" mt-3  mb-4  border border-blue-gray-100 bg-orange-500 flex">
           <CardBody className="p-5">
             <div className="grid grid-cols-1 md:grid-cols-12">
               {dataUser === null ? (
@@ -455,25 +443,6 @@ export function Profile() {
                     </div>
 
                     <div className="col-span-8 text-sm md:text-md">
-
-                      <div className="grid grid-cols-1 md:grid-cols-12">
-                        <div className="col-span-4 flex gap-2 items-center m-1">
-                          <LiaUniversitySolid /><h1>Kampus Tujuan </h1>
-                        </div>
-                        <div className="col-span-8 flex items-center m-1">
-                          <h1>: {dataUser?.user?.student?.university?.name ? dataUser?.user?.student?.university?.name : '-'}</h1>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-12">
-                        <div className="col-span-4 flex gap-2 items-center m-1">
-                          <GiTiedScroll /><h1>Target Jurusan </h1>
-                        </div>
-                        <div className="col-span-8 flex items-center m-1">
-                          <h1>: {dataUser?.user?.student?.major?.name ? dataUser?.user?.student?.major?.name : '-'}</h1>
-                        </div>
-                      </div>
-
                       <div className="grid grid-cols-1 md:grid-cols-12">
                         <div className="col-span-4 flex gap-2 items-center m-1">
                           <RiSchoolLine /><h1>Asal Sekolah </h1>
@@ -502,7 +471,7 @@ export function Profile() {
           <Card className="mb-6 border border-blue-gray-100">
             <CardBody className="p-4">
               <div>
-                <h1 className="text-teal-500 font-bold">Informasi Lainnya</h1>
+                <h1 className="text-orange-500 font-bold">Informasi Lainnya</h1>
               </div>
               <div>
                 <button className="w-full" onClick={(() => { setMenuContent("kebijakan") })}>
@@ -578,7 +547,7 @@ export function Profile() {
         <div className="col-span-8 -mt-2 mx-3">
           {menuContent === "default" ? (
 
-            <div className="flex flex-col items-center justify-center text-teal-500 text-lg font-bold">
+            <div className="flex flex-col items-center justify-center text-orange-500 text-lg font-bold">
               <h1>Silahkan Pilih Menu Terlebih Dahulu</h1>
               <Lottie
                 options={defaultContent}
@@ -590,7 +559,7 @@ export function Profile() {
           ) : menuContent === "ubahprofile" ? (
             <Card className="mb-6  border border-blue-gray-100">
               <CardBody className="p-4">
-                <h1 className="text=base font-bold text-teal-500">Ubah Profil</h1>
+                <h1 className="text=base font-bold text-orange-500">Ubah Profil</h1>
                 <form className="mt-2 mb-2 flex items-center justify-center">
                   <div className="m-4 flex flex-col gap-6 w-full">
                     <Typography color="blue-gray" className="-mb-3 text-sm font-bold">
@@ -728,43 +697,9 @@ export function Profile() {
                       )}
                     </Select>
 
-                    <Typography color="blue-gray" className="-mb-3 text-sm font-bold">
-                      Universitas Tujuan
-                    </Typography>
-                    <Select style={{ maxHeight: '50px' }} className="transform origin-bottom" size="md"
-                      label={!dataUser?.user?.student?.university ? "Pilih Universitas" : dataUser?.user?.student?.university?.name}
-                      error={!dataUser?.user?.student?.university && !IdUniv ? true : false}
-                      onChange={(value) => handleSelectChangeUniv(value)}>
-                      {/* value dikirim sebagai parameter funtion handle select */}
-                      {dataUniv?.map((item, key) => (
-                        //value diambil dari id univ
-
-                        <Option key={key} value={item.id}>
-                          {item.universitas}
-                        </Option>
-
-                      ))}
-                    </Select>
-
-                    <Typography color="blue-gray" className="-mb-3 text-sm font-bold">
-                      Target Jurusan
-                    </Typography>
-                    <Select style={{ maxHeight: '50px' }} className="transform origin-bottom" size="md"
-                      label={!dataUser?.user?.student?.major ? "Pilih Jurusan" : dataUser?.user?.student?.major?.name}
-                      error={!dataUser?.user?.student?.major && !IdMajor ? true : false}
-                      onChange={(value) => handleSelectChangeMajor(value)}>
-                      {!dataMajor ? (
-                        <p>Select Univ First</p>
-                      ) : (
-                        dataMajor?.map((item, key) => (
-                          <Option key={key} value={item.id}>
-                            {item.major}
-                          </Option>
-                        ))
-                      )}
-                    </Select>
+                  
                     <div className="flex items-center justify-center">
-                      <Button className="w-full md:w-1/2 flex gap-3 items-center justify-center" color="teal" variant="gradient"
+                      <Button className="w-full md:w-1/2 flex gap-3 items-center justify-center" color="orange" variant="gradient"
                         onClick={(() => { updateProfile(); setLoadingUpdate(true) })}
                       >
                         <span className="text-xs">Simpan Perubahan</span>
@@ -779,7 +714,7 @@ export function Profile() {
           ) : menuContent === "kebijakan" ? (
             <Card className="mb-6  border border-blue-gray-100">
               <CardBody className="p-4">
-                <h1 className="text=base font-bold text-teal-500">Kebijakan Dan Privasi</h1>
+                <h1 className="text=base font-bold text-orange-500">Kebijakan Dan Privasi</h1>
 
                 <div className="mb-4 mt-4 mx-4 mr-4 text-justify">
                   <p>{moreInfos.privacy.content[0]}</p>
@@ -802,7 +737,7 @@ export function Profile() {
           ) : menuContent === "s&k" ? (
             <Card className="mb-6  border border-blue-gray-100">
               <CardBody className="p-4">
-                <h1 className="text=base font-bold text-teal-500">Syarat & Ketentuan</h1>
+                <h1 className="text=base font-bold text-orange-500">Syarat & Ketentuan</h1>
 
                 <div className="mb-4 mt-4 mx-4 mr-4 text-justify">
                   <p>{moreInfos.message[0]}</p>
@@ -911,7 +846,7 @@ export function Profile() {
           ) : menuContent === "aboutus" ? (
             <Card className="mb-6  border border-blue-gray-100">
               <CardBody className="p-4">
-                <h1 className="text=base font-bold text-teal-500">Tentang Kami</h1>
+                <h1 className="text=base font-bold text-orange-500">Tentang Kami</h1>
                 <div className="mb-4 mt-4 mx-4 mr-4 text-justify">
                   <div className="flex gap-2 mt-3">
                     <p>{moreInfos?.about.moto}</p>
@@ -947,7 +882,7 @@ export function Profile() {
             <Card className="mb-6  border border-blue-gray-100">
               <CardBody className="p-4">
 
-                <div className="flex flex-col items-center justify-center text-teal-500 text-lg font-bold">
+                <div className="flex flex-col items-center justify-center text-orange-500 text-lg font-bold">
                   <h1>Saran dan masukan</h1>
                   <Lottie
                     options={feedBack}
@@ -960,7 +895,7 @@ export function Profile() {
                   </div>
 
                   <div>
-                    <Button color="teal" variant="gradient" onClick={(() => { handleSendFeedback() })}>Kirim</Button>
+                    <Button color="orange" variant="gradient" onClick={(() => { handleSendFeedback() })}>Kirim</Button>
                   </div>
 
                 </div>

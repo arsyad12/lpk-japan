@@ -14,7 +14,7 @@ export const Transaction_paket = async () => {
           },
         };
 
-        const response = await axios.get('https://panel.goprestasi.com/api/transaction-packets', config);
+        const response = await axios.get('http://103.127.133.56/api/transaction-packets', config);
         // console.log(response);
         // setProfileData(response.data);
         return response.data; 

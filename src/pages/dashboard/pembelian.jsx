@@ -89,7 +89,7 @@ export function Pembelian() {
 
     return (
         <>
-            <div className="relative p-4 mb-6 mt-4 w-full overflow-hidden rounded-xl bg-teal-600 bg-cover bg-center">
+            <div className="relative p-4 mb-6 mt-4 w-full overflow-hidden rounded-xl bg-orange-600 bg-cover bg-center">
                 {/* <div className="absolute inset-0 h-full w-full bg-gray-900/25" /> */}
                 <div className=" flex items-center justify-between flex-wrap gap-4">
                     <div className="w-100">
@@ -109,7 +109,7 @@ export function Pembelian() {
                                 color="white"
                                 className="group relative flex items-center gap-1 overflow-hidden pr-[36px] transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none ..."
                                 onClick={(()=>{navigate('/dashboard/paymentHistory')})}
-                            ><span className=" grid h-full w-7 place-items-center bg-light-teal-600 transition-colors group-hover:bg-light-teal-700">
+                            ><span className=" grid h-full w-7 place-items-center bg-light-orange-600 transition-colors group-hover:bg-light-orange-700">
                                     <i class="fa-solid fa-clock-rotate-left"></i>
                                 </span>
                                 Riwayat Pembelian
@@ -162,10 +162,10 @@ export function Pembelian() {
                                 </CardBody>
                                 <CardFooter className="pt-0">
                                     <div class="flex justify-between ...">
-                                        <Button onClick={() => handleOpen(item)} variant="outlined" color="teal">
+                                        <Button onClick={() => handleOpen(item)} variant="outlined" color="orange">
                                             Selengkapnya
                                         </Button>
-                                        <Button color="teal" onClick={() =>{navigate(`/dashboard/checkout/${item.id}`,{ state: { item }})}}>Beli Paket</Button>
+                                        <Button color="orange" onClick={() =>{navigate(`/dashboard/checkout/${item.id}`,{ state: { item }})}}>Beli Paket</Button>
                                     </div>
                                 </CardFooter>
                             </Card>
@@ -190,11 +190,11 @@ export function Pembelian() {
                                     </div>
                                 </DialogHeader>
                                 <DialogBody>
-                                    <div className="p-4 border border-teal-800 overflow-hidden rounded-xl">
+                                    <div className="p-4 border border-orange-800 overflow-hidden rounded-xl">
                                         <ul className="flex flex-col gap-4">
                                             {selectedPacket?.packet_detail?.split('<br>').map((desc, indexTrim) => (
                                                 <li key={indexTrim} className="flex items-center gap-4">
-                                                    <span className="rounded-full border border-teal-800 bg-teal-50 p-1">
+                                                    <span className="rounded-full border border-orange-800 bg-orange-50 p-1">
                                                         <CheckIcon />
                                                     </span>
                                                     <Typography className="font-normal">{desc.trim()}</Typography>
@@ -204,7 +204,7 @@ export function Pembelian() {
                                     </div>
                                 </DialogBody>
                                 <DialogFooter>
-                                    <Button variant="gradient" color="teal" onClick={handleOpen}>
+                                    <Button variant="gradient" color="orange" onClick={handleOpen}>
                                         <span>Confirm</span>
                                     </Button>
                                 </DialogFooter>

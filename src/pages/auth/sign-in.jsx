@@ -84,10 +84,9 @@ export function SignIn() {
           <img
             src="/img/assets/logo.png"
             alt="bruce-mars"
-            size="sm"
-            className="w-1/3 object-center mx-auto"
+            className="w-1/2 md:w-1/6 object-center mx-auto"
           />
-          <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Masukkan email dan password untuk melanjutkan.</Typography>
+          <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal -mt-6">Masukkan email dan password untuk melanjutkan.</Typography>
         </div>
 
         <form onSubmit={handleLogin} className="mt-4 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">

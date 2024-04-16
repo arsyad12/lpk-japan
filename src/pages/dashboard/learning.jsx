@@ -29,21 +29,20 @@ import { ProfileInfoCard, MessageCard } from "@/widgets/cards";
 import { dataLearning, SettingUserData } from "@/data";
 
 const Kelas = [
-    { value: '10', },
-    { value: '11', },
-    { value: '12', },
-    { value: 'UTBK', },
+    { value: 'Hiragana', },
+    { value: 'Katakana', },
+    { value: 'Kanji', },
 ];
 
-const Jurusan = [
-    { value: 'IPA', },
-    { value: 'IPS', },
-];
+// const Jurusan = [
+//     { value: 'IPA', },
+//     { value: 'IPS', },
+// ];
 
-const Semester = [
-    { value: 'Ganjil', },
-    { value: 'Genap', },
-];
+// const Semester = [
+//     { value: 'Ganjil', },
+//     { value: 'Genap', },
+// ];
 
 export function Learning() {
 
@@ -53,8 +52,8 @@ export function Learning() {
     const [dataLearn, setData] = useState(null);
     const [dataUser, setDataUser] = useState(undefined)
 
-    console.log(dataLearn)
-    console.log(dataUser)
+    // console.log(dataLearn)
+    // console.log(dataUser)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -76,8 +75,8 @@ export function Learning() {
 
 
     const [activeTab, setActiveTab] = useState(null);
-    const [activeTabJurusan, setActiveJurusan] = useState(null);
-    const [activeTabSemester, setActiveSemester] = useState(null);
+    // const [activeTabJurusan, setActiveJurusan] = useState(null);
+    // const [activeTabSemester, setActiveSemester] = useState(null);
 
     const [filter, setFilter] = useState({
         class: '',
@@ -88,6 +87,7 @@ export function Learning() {
     const handleTabClick = (filterType, filterValue) => {
         // Update the filter state based on the clicked tab
         // console.log(filterType);
+        console.log(filterValue)
         setFilter({
             ...filter,
             [filterType]: filterValue
@@ -95,11 +95,12 @@ export function Learning() {
 
         if (filterType === 'class') {
             setActiveTab(filterValue);
-        } else if (filterType === 'major') {
-            setActiveJurusan(filterValue);
-        } else {
-            setActiveSemester(filterValue);
-        }
+        } 
+        // else if (filterType === 'major') {
+        //     setActiveJurusan(filterValue);
+        // } else {
+        //     setActiveSemester(filterValue);
+        // }
     };
 
     const [openAlerts, setOpenAlerts] = useState({});
@@ -115,31 +116,31 @@ export function Learning() {
         }));
     };
 
-    const [openJurusanAlerts, setJurusanOpenAlerts] = useState({});
-    const toggleJurusanAlert = (id) => {
-        setJurusanOpenAlerts((prevOpenAlerts) => ({
-            ...prevOpenAlerts,
-            [id]: !prevOpenAlerts[id],
-        }));
-        setActiveJurusan(null);
-        setFilter((prevFilter) => ({
-            ...prevFilter,
-            major: '' // Atur filter class menjadi kosong
-        }));
-    };
+    // const [openJurusanAlerts, setJurusanOpenAlerts] = useState({});
+    // const toggleJurusanAlert = (id) => {
+    //     setJurusanOpenAlerts((prevOpenAlerts) => ({
+    //         ...prevOpenAlerts,
+    //         [id]: !prevOpenAlerts[id],
+    //     }));
+    //     setActiveJurusan(null);
+    //     setFilter((prevFilter) => ({
+    //         ...prevFilter,
+    //         major: '' // Atur filter class menjadi kosong
+    //     }));
+    // };
 
-    const [openSemesterAlerts, setSemesterOpenAlerts] = useState({});
-    const toggleSemesterAlert = (id) => {
-        setSemesterOpenAlerts((prevOpenAlerts) => ({
-            ...prevOpenAlerts,
-            [id]: !prevOpenAlerts[id],
-        }));
-        setActiveSemester(null);
-        setFilter((prevFilter) => ({
-            ...prevFilter,
-            semester: '' // Atur filter class menjadi kosong
-        }));
-    };
+    // const [openSemesterAlerts, setSemesterOpenAlerts] = useState({});
+    // const toggleSemesterAlert = (id) => {
+    //     setSemesterOpenAlerts((prevOpenAlerts) => ({
+    //         ...prevOpenAlerts,
+    //         [id]: !prevOpenAlerts[id],
+    //     }));
+    //     setActiveSemester(null);
+    //     setFilter((prevFilter) => ({
+    //         ...prevFilter,
+    //         semester: '' // Atur filter class menjadi kosong
+    //     }));
+    // };
 
 
     const navigateHandle = (learningId) => {
@@ -187,18 +188,18 @@ export function Learning() {
 
     return (
         <>
-            <div className='border-l-4 border-teal-500 rounded-1 mt-4'>
+            <div className='border-l-4 border-orange-500 rounded-1 mt-4'>
                 <Typography variant="h6" color="blue-gray" className="ml-2">
                     Daftar Bank Soal dan Rangkuman
                 </Typography>
             </div>
-            <div className="relative mt-4 h-28 w-full overflow-hidden rounded-xl bg-teal-600 bg-cover bg-center">
+            <div className="relative mt-4 h-28 w-full overflow-hidden rounded-xl bg-orange-600 bg-cover bg-center">
                 <div className="absolute inset-0 h-full w-full bg-gray-900/25" />
             </div>
             <Card className="mx-3 -mt-24 mb-4 lg:mx-4 border border-blue-gray-100">
                 <CardBody className="p-4">
                     <div className="mb-8 flex items-center justify-between flex-wrap gap-4">
-                        <div className="w-64">
+                        <div className="w-full">
                             <div className="flex items-center gap-2">
                                 <Typography variant="h6" color="blue-gray" >
                                     Kelas
@@ -214,7 +215,7 @@ export function Learning() {
                                 </Tabs>
                             </div>
                         </div>
-                        <div className="w-40">
+                        {/* <div className="w-40">
                             <div className="flex items-center gap-2">
                                 <Typography variant="h6" color="blue-gray" >
                                     Jurusan
@@ -245,7 +246,8 @@ export function Learning() {
                                     </TabsHeader>
                                 </Tabs>
                             </div>
-                        </div>
+                        </div> */}
+                    
                     </div>
                     <div className="gird-cols-1 mb-4 grid gap-12 px-4 h-24 justify-items-center content-center bg-[url('/img/assets/bg.png')] overflow-hidden rounded-xl bg-cover	bg-center">
                         <form method="GET">
@@ -282,7 +284,7 @@ export function Learning() {
                     </Alert>
                 ))}
 
-                {Jurusan.map((tab, index) => (
+                {/* {Jurusan.map((tab, index) => (
                     <Alert
                         key={tab.value}
                         open={activeTabJurusan === tab.value && openJurusanAlerts[tab.value]}
@@ -315,7 +317,7 @@ export function Learning() {
                     >
                         {tab.value}
                     </Alert>
-                ))}
+                ))} */}
 
 
             </div>
@@ -323,9 +325,9 @@ export function Learning() {
                 item.Learning.length > 0 &&
                 (!filter || Object.entries(filter).every(([key, value]) => !value || item.Learning.some((learn) => learn[key] === value))) &&
                 (
-                    <div key={index} className="bg-white p-4 shadow-md flex-col sm:flex-row justify-between items-center rounded-2xl mt-3 border-l-8 py-3 my-6 border-teal-400">
+                    <div key={index} className="bg-white p-4 shadow-md flex-col sm:flex-row justify-between items-center rounded-2xl mt-3 border-l-8 py-3 my-6 border-orange-400">
                         {/* {console.log('item.Learning:', item.Learning)} */}
-                        {console.log('filter:', filter)}
+                        {/* {console.log('filter:', filter)} */}
                         {/* {console.log('Filter Result:', Object.entries(filter).every(([key, value]) => !value || item.Learning.some((learn) => learn[key] === value)))} */}
                         <div className="flex flex-row gap-2 items-center inline-block align-middle">
                             <BookOpenIcon color="#179B8E" className="w-4" />

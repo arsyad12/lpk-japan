@@ -16,7 +16,7 @@ export const SettingUserData = async () => {
       };
 
       const response = await axios.get(
-        'https://panel.goprestasi.com/api/setting',
+        'http://103.127.133.56/api/setting',
         config,
       );
       // console.log(response);

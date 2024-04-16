@@ -51,7 +51,7 @@ export function PaymentHistory() {
                 },
             };
 
-            const response = await axios.get(`https://panel.goprestasi.com/api/transaction-history`, config);
+            const response = await axios.get(`http://103.127.133.56/api/transaction-history`, config);
             setDataHistory(response.data)
             setLoading(false)
         } catch (error) {
@@ -80,7 +80,7 @@ export function PaymentHistory() {
                 },
             };
 
-            const response = await axios.get(`https://panel.goprestasi.com/api/transaction-invoice/${idHistory}`, config);
+            const response = await axios.get(`http://103.127.133.56/api/transaction-invoice/${idHistory}`, config);
             setDetailInvoice(response?.data)
 
         } catch (error) {
@@ -119,11 +119,11 @@ export function PaymentHistory() {
 
                 <div className="mb-3"><p>Apakah pembelian kamu sudah benar? Paket tidak dapat diubah setelah ini</p></div>
 
-                <div className="mb-3 border-teal-500 border-2">
+                <div className="mb-3 border-orange-500 border-2">
                     <p className="pt-2">Ringkasan Pembelian</p>
                     <div className="m-4 flex justify-between">
                         <Typography className="font-normal">Harga Paket</Typography>
-                        <Typography color="gray-300" className="text-start text-teal-700 font-bold ">
+                        <Typography color="gray-300" className="text-start text-orange-700 font-bold ">
                             {waiting?.package?.price_before_discount.toLocaleString('id-ID', {
                                 style: 'currency',
                                 currency: 'IDR',
@@ -147,7 +147,7 @@ export function PaymentHistory() {
 
                     <div className="m-4  flex justify-between">
                         <Typography className="font-normal">Total Order</Typography>
-                        <Typography color="gray-300" className="text-start  text-teal-700 font-bold ">
+                        <Typography color="gray-300" className="text-start  text-orange-700 font-bold ">
                             {waiting?.package?.price_after_discount.toLocaleString('id-ID', {
                                 style: 'currency',
                                 currency: 'IDR',
@@ -158,7 +158,7 @@ export function PaymentHistory() {
 
                 </div>
 
-                <div className="m-4  flex justify-center gap-2 text-teal-500">
+                <div className="m-4  flex justify-center gap-2 text-orange-500">
                     <Countdown
                         date={detailInvoice?.midtrans?.expiry_time}
                         intervalDelay={0}
@@ -208,11 +208,11 @@ export function PaymentHistory() {
             title: "Pembelian Berhasil",
             html: <>
 
-                <div className="mb-3 border-teal-500 border-2">
+                <div className="mb-3 border-orange-500 border-2">
                     <p className="pt-2">Invoice Pembelian</p>
                     <div className="m-4 flex justify-between">
                         <Typography className="font-normal">Harga Paket</Typography>
-                        <Typography color="gray-300" className="text-start text-teal-700 font-bold ">
+                        <Typography color="gray-300" className="text-start text-orange-700 font-bold ">
                             {waiting?.package?.price_before_discount.toLocaleString('id-ID', {
                                 style: 'currency',
                                 currency: 'IDR',
@@ -236,7 +236,7 @@ export function PaymentHistory() {
 
                     <div className="m-4  flex justify-between">
                         <Typography className="font-normal">Total Order</Typography>
-                        <Typography color="gray-300" className="text-start  text-teal-700 font-bold ">
+                        <Typography color="gray-300" className="text-start  text-orange-700 font-bold ">
                             {waiting?.package?.price_after_discount.toLocaleString('id-ID', {
                                 style: 'currency',
                                 currency: 'IDR',
@@ -258,11 +258,11 @@ export function PaymentHistory() {
             title: "Transaksi Gagal",
             html: <>
 
-                <div className="mb-3 border-teal-500 border-2">
+                <div className="mb-3 border-orange-500 border-2">
                     <p className="pt-2">Invoice Pembelian</p>
                     <div className="m-4 flex justify-between">
                         <Typography className="font-normal">Harga Paket</Typography>
-                        <Typography color="gray-300" className="text-start text-teal-700 font-bold ">
+                        <Typography color="gray-300" className="text-start text-orange-700 font-bold ">
                             {waiting?.package?.price_before_discount.toLocaleString('id-ID', {
                                 style: 'currency',
                                 currency: 'IDR',
@@ -286,7 +286,7 @@ export function PaymentHistory() {
 
                     <div className="m-4  flex justify-between">
                         <Typography className="font-normal">Total Order</Typography>
-                        <Typography color="gray-300" className="text-start  text-teal-700 font-bold ">
+                        <Typography color="gray-300" className="text-start  text-orange-700 font-bold ">
                             {waiting?.package?.price_after_discount.toLocaleString('id-ID', {
                                 style: 'currency',
                                 currency: 'IDR',
@@ -325,10 +325,10 @@ export function PaymentHistory() {
         <>
 
             <div className="mt-2">
-                <Card className="mt-6 bg-teal-400 w-full">
+                <Card className="mt-6 bg-orange-400 w-full">
                     <Card className="mx-1 w-full overflow-hidden">
                         <Tabs value={activeTab} onChange={handleTabChange}>
-                            <TabsHeader className="m-4 bg-teal-600">
+                            <TabsHeader className="m-4 bg-orange-600">
                                 <Tab value="menunggu">
                                     <div className={activeTab === "menunggu" ? "flex items-center gap-2" : "flex items-center gap-2 text-white"}>
                                         <p>Menunggu</p>
@@ -350,7 +350,7 @@ export function PaymentHistory() {
                                 <TabPanel value="menunggu">
 
                                     {waitingTransactions?.length === 0 ? (
-                                        <Card className="mt-3 w-full border-2 border-teal-400">
+                                        <Card className="mt-3 w-full border-2 border-orange-400">
                                             <CardBody className=" grid grid-cols-1 md:grid-cols-12 justify-center">
 
                                                 <div className="col-span-2">
@@ -366,7 +366,7 @@ export function PaymentHistory() {
                                                             Ayow! Pilih paket My Tryout dan My Learning Sekarang
                                                         </Typography>
                                                         <button>
-                                                            <Typography className="bg-teal-100 text-teal-800 font-bold p-2 rounded px-4">
+                                                            <Typography className="bg-orange-100 text-orange-800 font-bold p-2 rounded px-4">
                                                                 PEMBELIAN
                                                             </Typography>
                                                         </button>
@@ -386,12 +386,12 @@ export function PaymentHistory() {
                                     ) :
                                         <>
                                             {dataHistory?.transaction_history.filter((item) => item.transaction_status === "Unpaid").map((waiting, waitingKey) => (
-                                                <Card key={waitingKey} className="mt-3 w-full border-2 border-teal-400">
+                                                <Card key={waitingKey} className="mt-3 w-full border-2 border-orange-400">
                                                     <CardBody>
                                                         <Typography variant="h4" color="gray" className="mb-2">
                                                             #{waiting?.package_name}
                                                         </Typography>
-                                                        <Typography color="gray-300" className="text-start text-teal-700 text-xl font-bold mb-3 ">
+                                                        <Typography color="gray-300" className="text-start text-orange-700 text-xl font-bold mb-3 ">
                                                             {waiting?.total_purchases.toLocaleString('id-ID', {
                                                                 style: 'currency',
                                                                 currency: 'IDR',
@@ -413,7 +413,7 @@ export function PaymentHistory() {
                                                         </div>
                                                     </CardBody>
                                                     <CardFooter className="pt-0 flex justify-end items-end">
-                                                        <Button onClick={(() => { getDetailInvoice(waiting.id); swalConfirm(waiting) })} color="teal" variant="gradient">Lihat Invoice</Button>
+                                                        <Button onClick={(() => { getDetailInvoice(waiting.id); swalConfirm(waiting) })} color="orange" variant="gradient">Lihat Invoice</Button>
                                                     </CardFooter>
                                                 </Card>
                                             ))}
@@ -425,7 +425,7 @@ export function PaymentHistory() {
                                 <TabPanel value="berhasil">
 
                                     {successTransactions?.length === 0 ? (
-                                        <Card className="mt-3 w-full border-2 border-teal-400">
+                                        <Card className="mt-3 w-full border-2 border-orange-400">
                                             <CardBody className=" grid grid-cols-1 md:grid-cols-12 justify-center">
 
                                                 <div className="col-span-2">
@@ -441,7 +441,7 @@ export function PaymentHistory() {
                                                             Ayow! Pilih paket My Tryout dan My Learning Sekarang
                                                         </Typography>
                                                         <button>
-                                                            <Typography className="bg-teal-100 text-teal-800 font-bold p-2 rounded px-4">
+                                                            <Typography className="bg-orange-100 text-orange-800 font-bold p-2 rounded px-4">
                                                                 PEMBELIAN
                                                             </Typography>
                                                         </button>
@@ -461,12 +461,12 @@ export function PaymentHistory() {
                                     ) :
                                         <>
                                             {dataHistory?.transaction_history.filter((item) => item.transaction_status === "Paid").map((waiting, waitingKey) => (
-                                                <Card key={waitingKey} className="mt-3 w-full border-2 border-teal-400">
+                                                <Card key={waitingKey} className="mt-3 w-full border-2 border-orange-400">
                                                     <CardBody>
                                                         <Typography variant="h4" color="gray" className="mb-2">
                                                             #{waiting?.package_name}
                                                         </Typography>
-                                                        <Typography color="gray-300" className="text-start text-teal-700 text-xl font-bold mb-3 ">
+                                                        <Typography color="gray-300" className="text-start text-orange-700 text-xl font-bold mb-3 ">
                                                             {waiting?.total_purchases.toLocaleString('id-ID', {
                                                                 style: 'currency',
                                                                 currency: 'IDR',
@@ -488,7 +488,7 @@ export function PaymentHistory() {
                                                         </div>
                                                     </CardBody>
                                                     <CardFooter className="pt-0 flex justify-end items-end">
-                                                        <Button onClick={(() => { swalConfirmSuccess(waiting) })} color="teal" variant="gradient">Lihat Invoice</Button>
+                                                        <Button onClick={(() => { swalConfirmSuccess(waiting) })} color="orange" variant="gradient">Lihat Invoice</Button>
                                                     </CardFooter>
                                                 </Card>
                                             ))}
@@ -500,7 +500,7 @@ export function PaymentHistory() {
                                 <TabPanel value="gagal">
 
                                     {failedTransactions?.length === 0 ? (
-                                        <Card className="mt-3 w-full border-2 border-teal-400">
+                                        <Card className="mt-3 w-full border-2 border-orange-400">
                                             <CardBody className=" grid grid-cols-1 md:grid-cols-12 justify-center">
 
                                                 <div className="col-span-2">
@@ -516,7 +516,7 @@ export function PaymentHistory() {
                                                             Ayow! Pilih paket My Tryout dan My Learning Sekarang
                                                         </Typography>
                                                         <button>
-                                                            <Typography className="bg-teal-100 text-teal-800 font-bold p-2 rounded px-4">
+                                                            <Typography className="bg-orange-100 text-orange-800 font-bold p-2 rounded px-4">
                                                                 PEMBELIAN
                                                             </Typography>
                                                         </button>
@@ -536,12 +536,12 @@ export function PaymentHistory() {
                                     ) :
                                         <>
                                             {dataHistory?.transaction_history.filter((item) => item.transaction_status === "Failed").map((waiting, waitingKey) => (
-                                                <Card key={waitingKey} className="mt-3 w-full border-2 border-teal-400">
+                                                <Card key={waitingKey} className="mt-3 w-full border-2 border-orange-400">
                                                     <CardBody>
                                                         <Typography variant="h4" color="gray" className="mb-2">
                                                             #{waiting?.package_name}
                                                         </Typography>
-                                                        <Typography color="gray-300" className="text-start text-teal-700 text-xl font-bold mb-3 ">
+                                                        <Typography color="gray-300" className="text-start text-orange-700 text-xl font-bold mb-3 ">
                                                             {waiting?.total_purchases.toLocaleString('id-ID', {
                                                                 style: 'currency',
                                                                 currency: 'IDR',
@@ -563,7 +563,7 @@ export function PaymentHistory() {
                                                         </div>
                                                     </CardBody>
                                                     <CardFooter className="pt-0 flex justify-end items-end">
-                                                        <Button onClick={(() => { swalFailed(waiting) })} color="teal" variant="gradient">Lihat Invoice</Button>
+                                                        <Button onClick={(() => { swalFailed(waiting) })} color="orange" variant="gradient">Lihat Invoice</Button>
                                                     </CardFooter>
                                                 </Card>
                                             ))}
